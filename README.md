@@ -23,7 +23,7 @@ Este é um aplicativo desktop em **Python** com uma interface moderna feita com 
    * Exemplo: `CONVERTIDOS_TXT`, `CONVERTIDOS_PDF`, etc.
 
 ## EXECUTANDO ESSE PROJETO:
-* 1. **Instale o Pandoc:**
+1. **Instale o Pandoc:**
    * O `pandoc` é a ferramenta principal usada para converter arquivos entre diversos formatos.
    * Siga os passos:
 
@@ -31,7 +31,7 @@ Este é um aplicativo desktop em **Python** com uma interface moderna feita com 
    2. Baixe e instale o Pandoc conforme seu sistema (Windows, macOS ou Linux).
    3. Certifique-se de que o comando `pandoc` funciona no terminal ou prompt (adicione ao `PATH` se necessário).
 
-* 2. **Instale um motor LaTeX (obrigatório para conversão para PDF):**
+2. **Instale um motor LaTeX (obrigatório para conversão para PDF):**
    * O Pandoc precisa de um engine LaTeX para gerar arquivos PDF.
    * Recomendado:
 
@@ -54,21 +54,21 @@ Este é um aplicativo desktop em **Python** com uma interface moderna feita com 
          brew install --cask mactex
          ```
 
-* 3. **Instale as dependências Python:**
+3. **Instale as dependências Python:**
    * Acesse o diretório do seu projeto (`CODIGO`) e execute:
 
    ```bash
    pip install -r requirements.txt
    ```
 
-* 4. **Execute o aplicativo:**
+4. **Execute o aplicativo:**
    * No terminal, dentro do diretório do projeto, execute:
 
    ```bash
    python CODIGO.py
    ```
 
-* 5. **Usando o Aplicativo:**
+5. **Usando o Aplicativo:**
    1. Clique em **“DIRETÓRIO”** para escolher a pasta com os arquivos a converter.
    2. Selecione o **formato de saída** (PDF, EPUB, DOCX ou TXT).
    3. Clique em **“CONVERTER”**.

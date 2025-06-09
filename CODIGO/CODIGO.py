@@ -4,12 +4,23 @@ import os
 import glob
 import pdfplumber
 from threading import Thread
+import ctypes  
 
 try:
     import pypandoc
     PANDOC_AVAILABLE = True
 except ImportError:
     PANDOC_AVAILABLE = False
+
+def is_hidden(filepath):
+    name = os.path.basename(filepath)
+    if name.startswith('.'):
+        return True
+    try:
+        attrs = ctypes.windll.kernel32.GetFileAttributesW(str(filepath))
+        return bool(attrs & 2)  
+    except:
+        return False
 
 class DocumentConverterApp:
     def __init__(self, root):
@@ -37,7 +48,7 @@ class DocumentConverterApp:
         self.format_frame_container = ctk.CTkFrame(self.scrollable_frame, border_width=2, border_color="gray")
         self.format_frame_container.pack(pady=10, padx=10)
 
-        self.format_label = ctk.CTkLabel(self.format_frame_container, text="FORMATO DE SAÍDA:", font=("Arial", 12))
+        self.format_label = ctk.CTkLabel(self.format_frame_container, text="CONVERTER PARA:", font=("Arial", 12))
         self.format_label.pack(pady=(10, 0))
 
         self.radio_buttons_frame = ctk.CTkFrame(self.format_frame_container)
@@ -88,7 +99,6 @@ class DocumentConverterApp:
         input_dir = self.selected_directory
         selected_format = self.output_format.get()
         pandoc_format = "plain" if selected_format == "txt" else selected_format
-
         output_dir = os.path.join(input_dir, f"CONVERTIDOS_{selected_format.upper()}")
 
         if not os.path.exists(output_dir):
@@ -96,8 +106,10 @@ class DocumentConverterApp:
 
         doc_extensions = ['*.docx', '*.txt', '*.md', '*.rtf', '*.odt', '*.html', '*.pdf', '*.epub']
         doc_files = []
+
         for ext in doc_extensions:
-            doc_files.extend(glob.glob(os.path.join(input_dir, ext)))
+            files = glob.glob(os.path.join(input_dir, ext))
+            doc_files.extend([f for f in files if not is_hidden(f)])
 
         total_files = len(doc_files)
         if not doc_files:
@@ -116,13 +128,12 @@ class DocumentConverterApp:
             try:
                 with pdfplumber.open(file_path) as pdf:
                     full_text = "\n".join([page.extract_text() or "" for page in pdf.pages])
-                
+
                 temp_txt_file = os.path.join(output_dir, f"{name_without_ext}_temp.txt")
                 with open(temp_txt_file, "w", encoding="utf-8") as f:
                     f.write(full_text)
 
                 pypandoc.convert_file(temp_txt_file, format='markdown', to=pandoc_format, outputfile=output_file)
-
                 os.remove(temp_txt_file)
 
             except Exception as e:
@@ -156,8 +167,7 @@ class DocumentConverterApp:
                     os.rmdir(output_dir)
                     self.append_status("\nNenhum arquivo foi convertido! Diretório de saída removido.\n")
                 except OSError:
-                    self.append_status("\nNenhum arquivo convertido, mas o diretório de saída não pôde ser removido (pode conter arquivos temporários).\n")
-            
+                    self.append_status("\nNenhum arquivo convertido, mas o diretório de saída não pôde ser removido.\n")
             messagebox.showerror(
                 "Erro na Conversão!",
                 "Nenhum dos documentos pôde ser convertido!\n"
@@ -193,4 +203,4 @@ if __name__ == "__main__":
     app = DocumentConverterApp(root)
     root.state("zoomed")
     root.resizable(True, True)
-    root.mainloop() 
+    root.mainloop()

@@ -5,4 +5,4 @@
 ---
 
 ## VERSÃO 1.0 - 02/06/2025:
-* ✅**FOI LANÇADO UM NOVO APLICATIVO:** Este é um aplicativo desktop em Python com uma interface moderna feita com customtkinter, que permite ao usuário converter arquivos de documentos (como .pdf, .docx, .txt, etc.) para outros formatos (.pdf, .epub, .docx, .txt), utilizando a biblioteca pypandoc (que é um wrapper para o conversor de documentos Pandoc).
+* ✅**FOI LANÇADO UM NOVO APLICATIVO:** Este é um aplicativo desktop em Python com uma interface moderna feita com customtkinter, que permite ao usuário converter arquivos de documentos (como `.pdf`, `.docx`, `.txt`, etc.) para outros formatos (`.pdf`, `.epub`, `.docx`, `.txt`), utilizando a biblioteca pypandoc (que é um wrapper para o conversor de documentos Pandoc).

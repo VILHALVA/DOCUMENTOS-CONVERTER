@@ -6,16 +6,16 @@
 <img src="./IMAGENS/FOTO_03.png" align="center" width="500"> <br>
 
 ## DESCRIÇÃO:
-Este é um aplicativo desktop em **Python** com uma interface moderna feita com `customtkinter`, que permite ao usuário **converter arquivos de documentos** (como `.pdf`, `.docx`, `.txt`, etc.) para outros formatos (`.pdf`, `.epub`, `.docx`, `.txt`), utilizando a biblioteca `pypandoc` (que é um wrapper para o conversor de documentos Pandoc).
+Este é um aplicativo desktop em **Python** com uma interface moderna feita com `customtkinter`, que permite ao usuário **converter arquivos de documentos** (`.docx`, `.txt`, `.md`, `.rtf`, `.odt`, `.html`, `.pdf` e `.epub`) para outros formatos (`.pdf`, `.epub`, `.docx` e `.txt`), utilizando a biblioteca `pypandoc` (que é um wrapper para o conversor de documentos Pandoc).
 
 ## FUNCIONALIDES:
 * Criada com `customtkinter`, com rolagem, botões, rótulos e barra de progresso.
 * Aparência em modo escuro.
 * O usuário pode escolher uma pasta com arquivos de documentos que deseja converter.
 * O programa reconhece automaticamente arquivos com as extensões:
-  * `.docx`, `.txt`, `.md`, `.rtf`, `.odt`, `.html`, `.pdf`
+  * `.docx`, `.txt`, `.md`, `.rtf`, `.odt`, `.html`, `.pdf` e `.epub`
 * O usuário escolhe o formato de saída desejado:
-  * `PDF`, `EPUB`, `DOCX`, `TXT`
+  * `PDF`, `EPUB`, `DOCX` e `TXT`
 * Todos os arquivos do diretório selecionado são convertidos para o formato escolhido.
 * Mostra o andamento da conversão.
 * Exibe mensagens sobre cada etapa da conversão.
@@ -70,7 +70,7 @@ Este é um aplicativo desktop em **Python** com uma interface moderna feita com 
 
 5. **Usando o Aplicativo:**
    1. Clique em **“DIRETÓRIO”** para escolher a pasta com os arquivos a converter.
-   2. Selecione o **formato de saída** (PDF, EPUB, DOCX ou TXT).
+   2. Selecione o **formato de saída** (`PDF`, `EPUB`, `DOCX` ou `TXT`).
    3. Clique em **“CONVERTER”**.
    4. Acompanhe o progresso na barra e na área de status.
    5. Os arquivos convertidos serão salvos automaticamente na subpasta:

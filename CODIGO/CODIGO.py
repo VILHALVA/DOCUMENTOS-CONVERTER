@@ -25,7 +25,7 @@ def is_hidden(filepath):
 class DocumentConverterApp:
     def __init__(self, root):
         self.root = root
-        self.root.title("CONVERSOR DE DOCUMENTOS")
+        self.root.title("DOCUMENTOS CONVERTER")
 
         ctk.set_appearance_mode("dark")
         ctk.set_default_color_theme("blue")
@@ -38,12 +38,6 @@ class DocumentConverterApp:
 
         self.title_label = ctk.CTkLabel(self.scrollable_frame, text="CONVERSOR DE DOCUMENTOS", font=("Arial", 16))
         self.title_label.pack(pady=10)
-
-        self.select_dir_button = ctk.CTkButton(self.scrollable_frame, text="DIRETÓRIO", command=self.select_directory)
-        self.select_dir_button.pack(pady=5)
-
-        self.convert_button = ctk.CTkButton(self.scrollable_frame, text="CONVERTER", command=self.start_conversion)
-        self.convert_button.pack(pady=5)
 
         self.format_frame_container = ctk.CTkFrame(self.scrollable_frame, border_width=2, border_color="gray")
         self.format_frame_container.pack(pady=10, padx=10)
@@ -60,7 +54,16 @@ class DocumentConverterApp:
                 self.radio_buttons_frame, text=fmt.upper(), variable=self.output_format, value=fmt
             ).pack(side="left", padx=5, pady=5)
 
-        self.status_textbox = ctk.CTkTextbox(self.scrollable_frame, width=500, height=200)
+        self.button_frame = ctk.CTkFrame(self.scrollable_frame)
+        self.button_frame.pack(pady=10)
+
+        self.select_dir_button = ctk.CTkButton(self.button_frame, text="DIRETÓRIO", command=self.select_directory)
+        self.select_dir_button.pack(side="left", padx=5)
+
+        self.convert_button = ctk.CTkButton(self.button_frame, text="CONVERTER", command=self.start_conversion)
+        self.convert_button.pack(side="left", padx=5)
+
+        self.status_textbox = ctk.CTkTextbox(self.scrollable_frame, width=500, height=250)
         self.status_textbox.pack(pady=10)
         self.status_textbox.configure(state='disabled')
 

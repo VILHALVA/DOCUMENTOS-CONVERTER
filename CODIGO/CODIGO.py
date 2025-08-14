@@ -36,7 +36,7 @@ class DocumentConverterApp:
         self.scrollable_frame = ctk.CTkScrollableFrame(root, width=580, height=580)
         self.scrollable_frame.pack(padx=10, pady=10, fill="both", expand=True)
 
-        self.title_label = ctk.CTkLabel(self.scrollable_frame, text="CONVERSOR DE DOCUMENTOS", font=("Arial", 16))
+        self.title_label = ctk.CTkLabel(self.scrollable_frame, text="CONVERSOR DE DOCUMENTOS", font=("Arial", 32, "bold"))
         self.title_label.pack(pady=10)
 
         self.format_frame_container = ctk.CTkFrame(self.scrollable_frame, border_width=2, border_color="gray")
